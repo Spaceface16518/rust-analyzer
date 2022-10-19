@@ -20,6 +20,7 @@ pub(crate) mod r#type;
 pub(crate) mod use_;
 pub(crate) mod vis;
 pub(crate) mod env_vars;
+pub(crate) mod extern_crate;
 
 use std::iter;
 
