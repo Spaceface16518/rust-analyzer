@@ -13,13 +13,11 @@ mod tests {
     fn single_crate() {
         check(
             r#"
-//- /lib.rs crate:main deps:other_crate
+//- /lib.rs crate:main extern-prelude:other_crate
 extern crate $0
-//- /other_crate/lib.rs crate:other_crate
-// nothing here
 "#,
             expect![[r#"
-            md other_crate;
+            md other_crate
         "#]],
         );
     }
@@ -28,16 +26,12 @@ extern crate $0
     fn multiple_crates() {
         check(
             r#"
-//- /lib.rs crate:main deps:crate_a,crate_b
+//- /lib.rs crate:main extern-prelude:crate_a,crate_b
 extern crate $0
-//- /crate_a/lib.rs crate:crate_a
-// nothing here
-//- /crate_B/lib.rs crate:crate_b
-// nothing here
 "#,
             expect![[r#"
-            md crate_a;
-            md crate_b;
+            md crate_a
+            md crate_b
         "#]],
         )
     }
