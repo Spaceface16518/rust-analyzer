@@ -1,3 +1,15 @@
+use crate::context::{CompletionContext, PathCompletionCtx};
+
+use super::Completions;
+
+pub(crate) fn complete_extern_crate(
+    acc: &mut Completions,
+    ctx: &CompletionContext<'_>,
+    path_ctx: &PathCompletionCtx,
+) {
+    acc.add_crate_roots(ctx, path_ctx)
+}
+
 #[cfg(test)]
 mod tests {
     use expect_test::{expect, Expect};
