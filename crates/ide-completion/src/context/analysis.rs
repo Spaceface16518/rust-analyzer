@@ -622,6 +622,10 @@ fn classify_name_ref(
                 });
                 return Some(make_res(kind));
             },
+            ast::ExternCrate(extern_crate) => {
+                let kind = NameRefKind::Crate(extern_crate);
+                return Some(make_res(kind));
+            },
             _ => return None,
         }
     };

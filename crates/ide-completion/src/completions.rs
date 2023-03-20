@@ -681,6 +681,9 @@ pub(super) fn complete_name_ref(
             record::complete_record_expr_fields(acc, ctx, expr, dot_prefix);
         }
         NameRefKind::Pattern(pattern_ctx) => complete_patterns(acc, ctx, pattern_ctx),
+        NameRefKind::Crate(extern_crate) => {
+            extern_crate::complete_extern_crate(acc, ctx, &extern_crate.name_ref())
+        }
     }
 }
 
